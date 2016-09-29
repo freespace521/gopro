@@ -6,4 +6,33 @@ cd mygit/goPro
 vim git.txt
 
 2 git add * (git add git.txt)
+
 3 git commit -m "add git.txt"
+
+4 git status        查看git仓库的状态
+
+5 git diff git.txt  查看文件差异
+
+6 git log
+
+7 HEAD
+    git中,用HEAD表示当前版本,上一个版本就是HEAD^,上上版本就是HEAD^^
+
+
+8 git reset         回退版本
+git reset --hard HEAD^
+git reset --hard commitId 回退到特定版本
+git reset HEAD file 可以将最新的版本暂存区的修改回退到工作区.
+
+9 git reflog        记录每次操作命令
+
+10 git checkout -- file 丢弃工作区的修改,discard changes in working directory
+    --很重要,没有-- 就变成"切换到另一个分支"了.
+
+11 关联一个远程仓库
+    git remote add origin git@server-name:path/repo-name.git
+    git remote add origin git@github.com:freespace521/gopro.git
+12 提交到远程仓库
+    git push origin master
+
+
