@@ -1,0 +1,4 @@
+mkdir mygit/goPro
+cd mygit/goPro
+
+git init
