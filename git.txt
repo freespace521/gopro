@@ -1,4 +1,9 @@
 mkdir mygit/goPro
 cd mygit/goPro
 
-git init
+1 git init
+
+vim git.txt
+
+2 git add * (git add git.txt)
+3 git commit -m "add git.txt"
