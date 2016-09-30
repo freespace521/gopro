@@ -29,11 +29,56 @@ git reset HEAD file 可以将最新的版本暂存区的修改回退到工作区
 10 git checkout -- file 丢弃工作区的修改,discard changes in working directory
     --很重要,没有-- 就变成"切换到另一个分支"了.
 
-11 关联一个远程仓库
+11 关联一个远程仓库(先有本地库,后有远程库的时候,就要关联)
     git remote add origin git@server-name:path/repo-name.git
     git remote add origin git@github.com:freespace521/gopro.git
+
+    添加后,远程库名字就是origin,这是GIT默认的叫法,也可以改成别的,但是origin这个
+    名字一看就是远程库.
 
 12 提交到远程仓库
     git push origin master
 
+    第一次提交时,如果远程库是空的,推送到master分支时,加上-u参数.
+    git不但会把本地的master分支内容推送到远程新的master分支,还会把本地的master分支和
+    远程的master分支关联起来,在以后的推送或者拉取时就可以简化命令了.
+
+13 克隆一个远程库
+    git clone git@github.com:user/xxx.git
+
+
+
+14 创建与合并分支
+    1 在git里,主分支叫master,HEAD严格来说不是指向提交,而是指向master,master才是指向提交.
+    所以,HEAD指向的就是当前分支.
+    2 每次提交,master分支都会向前移动一步,随着不断的提交,master分支的线也越来越长.
+    3 创建新的分支,如dev时,git新建一个指针叫dev,指向master相同的提交,再把HEAD指向dev,
+    
+            master
+            |
+    o---o---o
+            |
+            dev
+            |
+            HEAD
+
+    4 从现在开始,对工作区的修改和提交就是针对dev分支了,比如新提交一次后,dev指针向前移动一步
+      而master指针不变.
+
+          master
+            |
+    o---o---o---o
+                |
+               dev
+                |
+               HEAD
+
+    5 如果dev开发完成后,合并到master,最简单的方法是直接把master指向dev当前提交. 
+      合并完成后,可以删除dev分支,只留下一个master分支.
+
+
+    6 git checkout -b dev   创建dev分支
+
+
+git pull origin master
 
