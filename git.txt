@@ -24,7 +24,7 @@ git reset --hard HEAD^
 git reset --hard commitId 回退到特定版本
 git reset HEAD file 可以将最新的版本暂存区的修改回退到工作区.
 
-9 git reflog        记录每次操作命令
+9 git reflog        记录每次操作命令,可以查看commitId等
 
 10 git checkout -- file 丢弃工作区的修改,discard changes in working directory
     --很重要,没有-- 就变成"切换到另一个分支"了.
@@ -32,6 +32,7 @@ git reset HEAD file 可以将最新的版本暂存区的修改回退到工作区
 11 关联一个远程仓库
     git remote add origin git@server-name:path/repo-name.git
     git remote add origin git@github.com:freespace521/gopro.git
+
 12 提交到远程仓库
     git push origin master
 
