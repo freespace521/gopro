@@ -221,3 +221,9 @@ git push origin HEAD:refs/for/mybranch会更新,HEAD比 master更准确.
 用一个空的去更新它.相当于删除了.
 
 
+git push origin master:refs/for/master
+git push origin HEAD:refs/for/master
+
+
+refs/for/branch   是gerrit的规则.是需求经过code revie后才可以提交.
+refs/heads/branch   可以(bypasses review entirely)绕过评审.
