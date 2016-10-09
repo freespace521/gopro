@@ -155,3 +155,69 @@ ref: refs/heads/master
 
 git pull origin master
 
+
+
+
+
+
+总结:
+git 的操作主要分为3大步骤
+1 从git取数据 git clone,git pull
+2 改动代码
+3 将改动传回 git push
+
+这3个步骤涉及到2个repository:
+1 remote repository:远程服务器.
+2 local repository: 自己工作区.
+
+1,3 二个操作涉及到remote server/remote repository/remote brance
+2 操作涉及到local repository/local branch, 
+git clone会根据指定的remote server/repository/brance, 拷贝一个副本到本地.
+在push 之前,对所有文件的改动都是本地的local repository来做的.
+你的改动local branch和remote brance是独立的.
+
+在clone完成之后,Git会自动的将此远程仓库命名为origin (只相当于一个别名,运行
+git remote -v 或者查看.git/config 可以看到origin的含义)
+当下载完成后,建立一个指向它的master分支的指针,我们用(远程仓库名)/(分支名)这样的
+形式表示远程分支,所以: origin/master指向的是一个remote branch(从那个branch
+clone来的).
+
+同时,git会建立一个本地的master分支,它指向你刚刚从remote server拷贝而来的副本.
+随着不断的改动文件,git add ,git commit,
+master的指向会自动移动,也可以通过merge(fast forward)来移动master的指向.
+
+git branch -a
+    *master
+    remotes/origin/master
+
+master就是local branch, origin/master是remote branch.
+
+
+git push origin master
+
+origin 指定了你要push的那个remote
+master其实是一个"refspec", 正常的形式是+<src>:<dst>
+冒号前表示local branch的名字,冒号后表示remote repository下的brance的名字.
+如果省略了dst,git就认为你想push 到remote repository下和local branch
+相同名字的branch.
+
+git push 例子说明:
+
+1   git push origin master:master
+在local repository中找到名字为master的branch,使用它去更新remote
+repository下名字为master的branch,如果远程仓库中没有master分支,那么会新建一个.
+
+2   git push origin master 
+省略了dst,等价于: git push origin master:master
+
+3   git push origin master:refs/for/mybranch 
+用local repository下的master分支去更新 remote
+repository下的名字为mybranch的branch
+用:
+git push origin HEAD:refs/for/mybranch会更新,HEAD比 master更准确.
+
+4 git push origin :mybranch
+在origin repository里面查找mybranch,删除它.
+用一个空的去更新它.相当于删除了.
+
+
